@@ -51,11 +51,14 @@ The container exposes ports 8333 for bitcoin protocol and 8332 for RPC.
 
 It is also recommended to map a volume for the bitcoin client data directory
 at `/bitcoin/data` inside the container for permanently storing the blockchain
-database and wallet.
+database and wallet. The volume should be owned and writable by UID 1000.
 
 So to run the container in the background, you would do something like this:
 
     docker run -d -v ~/bitcoin:/bitcoin/data -e CONF_RPCPASSWORD=changeme beli/bitcoin
 
 Please don't forget to change the password to something more secure.
+
+Or use *docker-compose* in the source directory and either pass `CONF_RPCPASSWORD`
+as environment variable to docker compose or edit `docker-compose.yml`.
 

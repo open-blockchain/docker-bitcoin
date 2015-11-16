@@ -1,0 +1,10 @@
+bitcoin:
+  build: .
+  volumes:
+    - ./data:/bitcoin/data:rw
+  ports:
+    - "8332:8332"
+    - "8333:8333"
+  environment:
+    CONF_RPCPASSWORD:
+
