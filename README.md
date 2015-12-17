@@ -47,6 +47,10 @@ so for example:
 
 would set `rpcpassword=changeme`. The `CONF_RPCPASSWORD` parameter is required.
 
+For parameters which can be passed multiple times, specify multiple values
+separated by a pipe symbol (|). That also means the pipe symbol can not be
+otherwise used in a parameter value.
+
 The container exposes ports 8333 for bitcoin protocol and 8332 for RPC.
 
 It is also recommended to map a volume for the bitcoin client data directory
@@ -61,4 +65,3 @@ Please don't forget to change the password to something more secure.
 
 Or use *docker-compose* in the source directory and either pass `CONF_RPCPASSWORD`
 as environment variable to docker compose or edit `docker-compose.yml`.
-
