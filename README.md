@@ -10,7 +10,9 @@ Versions
 Available Docker Hub tags / Git branches:
 
 **xt** - Bitcoin XT from official apt repository maintained by Bitcoin XT developers
+
 **core** - Bitcoin Core from Debian Sid
+
 **latest/master** - points to *xt*
 
 
