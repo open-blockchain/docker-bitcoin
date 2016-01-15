@@ -1,7 +1,17 @@
 Bitcoin core docker image
 =========================
 
-Docker image of Bitcoin core client.
+Docker image of Bitcoin client.
+
+
+Versions
+--------
+
+Available Docker Hub tags / Git branches:
+
+**xt** - Bitcoin XT from official apt repository maintained by Bitcoin XT developers
+**core** - Bitcoin Core from Debian Sid
+**latest/master** - points to *xt*
 
 
 Locations
@@ -55,7 +65,8 @@ The container exposes ports 8333 for bitcoin protocol and 8332 for RPC.
 
 It is also recommended to map a volume for the bitcoin client data directory
 at `/bitcoin/data` inside the container for permanently storing the blockchain
-database and wallet. The volume should be owned and writable by UID 1000.
+database and wallet. The volume should be owned and writable by UID 1000 for
+Bitcoin Core and UID 105 / GID 108 for Bitcoin XT.
 
 So to run the container in the background, you would do something like this:
 
