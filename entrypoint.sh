@@ -16,4 +16,4 @@ env | grep '^CONF_\w\+=' | cut -d= -f1 | while read EVAR ; do
 	echo -n "${!EVAR}" | xargs -d '|' -I '{}' echo "${CVAR}={}" >> /etc/bitcoin.conf
 done
 
-exec gosu bitcoin /usr/bin/bitcoind -conf=/etc/bitcoin.conf
+exec gosu "$@"

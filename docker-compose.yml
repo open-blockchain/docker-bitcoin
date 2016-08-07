@@ -7,4 +7,3 @@ bitcoin:
     - "8333:8333"
   environment:
     CONF_RPCPASSWORD:
-

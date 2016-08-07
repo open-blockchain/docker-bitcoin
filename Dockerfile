@@ -1,7 +1,5 @@
 FROM debian:jessie
-MAINTAINER Michal Belica <devel@beli.sk>
-EXPOSE 8333
-EXPOSE 8332
+MAINTAINER Alexandru Rosianu <me@aluxina.com>
 
 # app runs as user bitcoin(1000) inside the container
 
@@ -22,14 +20,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends bitcoind \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
+
 COPY bitcoin.conf /etc/
-COPY entrypoint /
-RUN chmod 0755 /entrypoint \
+COPY entrypoint.sh /
+
+RUN chmod 0755 /entrypoint.sh \
 	&& useradd -U -M -s /usr/sbin/nologin -d /bitcoin bitcoin \
 	&& mkdir -p /bitcoin/data \
 	&& mkdir -p /bitcoin/.bitcoin \
 	&& ln -s /etc/bitcoin.conf /bitcoin/.bitcoin/bitcoin.conf \
 	&& chown -R bitcoin: /bitcoin
+
 VOLUME /bitcoin/data
 ENV HOME /bitcoin
-CMD ["/entrypoint"]
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bitcoin", "/usr/bin/bitcoind", "-conf=/etc/bitcoin.conf"]
+
+EXPOSE 8333
+EXPOSE 8332
