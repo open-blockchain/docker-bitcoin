@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Alexandru Rosianu <me@aluxina.com>
+MAINTAINER Alexandru Rosianu <me@aluxian.com>
 
 # app runs as user bitcoin(1000) inside the container
 
